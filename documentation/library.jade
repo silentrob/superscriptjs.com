@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title SuperScript Documentation
+    include ../includes/head
+  body.inner
+    section.content
+      header
+        - active = 'guide'
+        include ../includes/header
+      include ../includes/mixins
+      #overlay
+      #sidebar-wrapper.stick
+        ul
+          li.heading
+            a Library API
+          li
+            a(href="#bot") Bot Class
+          li
+            a(href="#events") Events
+          li
+            a(href="#example") Example
+          
+          
+      #content
+        include library-content.md
+
+    include ../includes/footer

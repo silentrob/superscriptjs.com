@@ -1,0 +1,80 @@
+doctype html
+html
+  head
+    title SuperScript Documentation
+    include ../includes/head
+  body.inner
+    section.content
+      header
+        - active = 'guide'
+        include ../includes/header
+      include ../includes/mixins
+      #overlay
+      #sidebar-wrapper.stick
+        ul
+          li.heading
+            a Scripting
+          li
+            a(href="#") What is this thing
+          li.heading
+            a(href="#triggers") Triggers
+          li
+            a(href="#rules") Basic rules
+          li
+            a(href="#wildcards") Wildcards
+          li
+            a(href="#variable") &mdash; Variable length wildcards
+          li
+            a(href="#exact") &mdash; Exact length wildcards
+          li
+            a(href="#alternate") Alternates
+          li
+            a(href="#optional") Optionals
+          li
+            a(href="#capture") Captureing Data Back
+          li
+            a(href="#special") Special Matches          
+          li
+            a(href="#qtype") &mdash; Question Types
+          li
+            a(href="#answer") &mdash; Answer Types
+          li
+            a(href="#pos") &mdash; Parts of Speach
+          li
+            a(href="#convo") Conversations
+          li
+            a(href="#wordnet") Wordnet Expansion
+
+          li.heading
+            a(href="#replies") Replies 
+          li
+            a(href="#keepflag") Reply flag {keep} 
+          li
+            a(href="#redirect") Reply redirect {@redirect} 
+          li
+            a(href="#custom") Custom Functions
+
+          li.heading
+            a(href="#topics") Topics
+          li 
+            a() Pending Documentation
+          
+          li.heading
+            a(href="#say") Talking back
+          li 
+            a() Pending Documentation
+
+          //- li.heading
+          //-   a(href="#objref") Object Reference
+          //- li
+          //-   a(href="#") Message Object
+          //- li
+          //-   a(href="#") User Object
+
+
+
+
+      #content
+        include scripting-content.md
+
+    include ../includes/footer

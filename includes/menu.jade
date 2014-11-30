@@ -1,0 +1,48 @@
+include mixins
+
+#navbar
+
+  ul#navmenu
+    li
+      a(href='/', class=active == 'home' ? 'active' : '')#home-menu Home
+
+    li
+      ul#getting-started-menu.menu
+        li
+          a(href='/starter/how-it-works.html', class=active == 'starter' ? 'active' : '') Getting started
+          ul
+            li
+              a(href='/starter/how-it-works.html') How it works
+            li
+              a(href='/starter/quickstart.html') Quickstart
+
+    li
+      ul#guide-menu.menu
+        li
+          a(href='/documentation/scripting.html', class=active == 'guide' ? 'active' : '') Documentation
+          ul
+            li
+              a(href='/documentation/scripting.html' ) Scripting API
+            li
+              a(href='/documentation/library.html' ) Library API
+
+    li
+      ul#npm-menu.menu
+        li
+          a(href='https://www.npmjs.org/package/superscript', class=active == 'source' ? 'active' : '') NPM
+
+    li
+      ul#src-menu.menu
+        li
+          a(href='https://github.com/silentrob/superscript', class=active == 'source' ? 'active' : '') Source
+
+
+    //- li
+    //-   ul#advanced-topics-menu.menu
+    //-     li
+    //-       a(href='/advanced/slack.html', class=active == 'advanced' ? 'active' : '') Advanced topics
+    //-       ul
+    //-         li
+    //-           a(href='/advanced/slack.html') Slack Intergration
+
+    //- 
