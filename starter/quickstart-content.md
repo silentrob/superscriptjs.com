@@ -1,5 +1,5 @@
 
-# Installing Dependancies
+# Installing Dependencies
 
 SuperScript has a dependency on <a href="https://github.com/silentrob/conceptnet" title="Helps setup Concept 4 Database with MySQL and provides some sugar for getting some data out">ConceptNet Bridge</a> and requires <a href="http://mysql.com">MySQL</a>, and manually importing the SQL database.
 
