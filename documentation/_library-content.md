@@ -9,7 +9,7 @@ $ npm install superscript
 
 ```
 
-We are assuming you have already serup node.js and have NPM installed (included with node) as well as a working understanding of JavaScript.
+We are assuming you have already setup node.js and have NPM installed (included with node) as well as a working understanding of JavaScript.
 <a class="doc-anchor" name="bot"></a>
 ## The Bot Class
 
@@ -70,7 +70,7 @@ bot.getUser(user_id);
 ```
 <a class="doc-anchor" name="events"></a>
 ## Events
-Superscript will emits events as well.
+SuperScript will emit events as well.
 
 ### message event
 
@@ -81,7 +81,7 @@ bot.on('message', function(user_id, bot_message){
 
 ```
 
-If your script has things for the bot to say first, or during long awkward pauses, the will be sent to this event.
+If your script has things for the bot to say first, or during long awkward pauses, they will be sent to this event.
 
 
 <a class="doc-anchor" name="example"></a>
@@ -100,7 +100,7 @@ new superscript('./data.json', {}, function(err, bot){
 ```
 
 <div class="doc-box doc-info">
-	For a interactive example application, follow the steps on the getting started page and setup a chat server with Telnet.
+	For an interactive example application, follow the steps on the getting started page and setup a chat server with telnet.
 </div>
 
 
