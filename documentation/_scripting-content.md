@@ -41,7 +41,7 @@
 ## What is this thing...
 SuperScript is a dialogue scripting language and bot engine for creating chat bots. This software could be used to create a personal assistant like Siri or Google Now, however SuperScript also supports fully interactive style chatting as well and could reach out without being initiated.
 
-If you are familiar to conversational scripting software, SuperScript is simular to RiveScript with its ease of use in Syntax and ChatScript for its expressive and powerful nature.
+If you are familiar to conversational scripting software, SuperScript is simular to [RiveScript] with its ease of use in Syntax and [ChatScript] for its expressive and powerful nature.
 
 <a class="doc-anchor" name="triggers" ></a>
 # Triggers
@@ -108,14 +108,14 @@ Variable length wildcards are great for capturing input where an adjective might
 + *~2 // Zero to Two words
 + *~3 // Zero to Three words
  ...
- + *~99 // Zero to Ninty-Nine words
+ + *~99 // Zero to Ninety-Nine words
 
 ```
 
 <a class="doc-anchor" name="exact" ></a>
 ### Exact Length Wildcards
 
-If you know exactly how many words you want to accept, but don't want to list what the words are, then a exact length wildcard might be what your after, this is identical to the variable length wildcard above with only a slight difference.
+If you know exactly how many words you want to accept, but don't want to list what the words are, then an exact length wildcard might be what you're after. This is identical to the variable length wildcard above with only a slight difference.
 
 ```sh
 + *1 // One word
@@ -180,14 +180,14 @@ Only wildcards that are NOT ZERO length can be used to capture input. So wildcar
 <a class="doc-anchor" name="qtype" ></a>
 ### Question Types
 
-We have seen above how *+* will match any input, if however you want to just match a question you can use *?* the begin your trigger pattern.
+We have seen above how *+* will match any input, if however you want to just match a question you can use *?* to begin your trigger pattern.
 
 ```sh
 ? * 
 - Interesting question, let me get back to you on that.
 ```
 
-Superscript can go one step further and disseminate between different question types.
+SuperScript can go one step further and disseminate between different question types.
 
 ```sh
 WH - WH Questions, who, what where when why. 
@@ -219,7 +219,7 @@ TG - Tag Questions, Ann is taller then Jane.
 <a class="doc-anchor" name="answer" ></a>
 ### Answer Types
 
-We can also match based on the type of answer we expect back from the message, and SuperScript supports 8 broard categories and over 40 sub categories with 80% accuracy.
+We can also match based on the type of answer we expect back from the message, and SuperScript supports 8 broad categories and over 40 sub categories with 80% accuracy.
 
 ```sh
 ABBR        - abbreviation
@@ -292,7 +292,7 @@ Here are some examples:
 ```
 
 <a class="doc-anchor" name="pos"></a>
-## Parts of Speach
+## Parts of Speech
 
 When input comes into the system, we tag it and analyze it to help make sense of what is being said. We also allow for inline subsitutations back into the actual trigger.
 
@@ -329,19 +329,19 @@ For conversation to really flow you need to have more then one exchange. We use 
 
 ```
 
-So lets walk though this example, some input comes into the system and the open wildcard matches and replies with *What is your favorite color?*. 
+So let's walk though this example. Some input comes into the system and the open wildcard matches and replies with *What is your favorite color?*. 
 
-When the next input comes into the system, we first check the history and see if previous reply has more dialogue. This is noted by the *% What is your favorite color?* line.
+When the next input comes into the system, we first check the history and see if the previous reply has more dialogue. This is noted by the *% What is your favorite color?* line.
 
-We pull the next trigger, this this case it is **1* meaning one word. The bot then replies with *`<cap>` is mine too.* replacing that one word with `<cap>`.
+We pull the next trigger, in this case it is **1* meaning one word. The bot then replies with *`<cap>` is mine too.* replacing that one word with `<cap>`.
 
 <a class="doc-anchor" name="wordnet" ></a>
-## Wordnet Expansion
+## WordNet Expansion
 
 
-Wordnet is a database of words and ontology including hypernym, synonyms and lots of other neat relationships between words.
+WordNet is a database of words and ontology including hypernym, synonyms and lots of other neat relationships between words.
 
-SuperScript useing the raw wordnet library, as well has expanded it to include fact tuples and provide even more relationships, though its scripted fact graph database.
+SuperScript is using the raw WordNet library, as well it has expanded it to include fact tuples and provide even more relationships, through its scripted fact graph database.
 
 These terms are expanded by using a tilde `~` before the word you want to expand.
 
@@ -357,7 +357,7 @@ I perfer lacrosse
 ```
 
 ## A few more thoughts on Triggers
-When input comes into the system it is bursted into seperate message objects and handled seperatly. We break input on ending punctionation AND commas following WH words.
+When input comes into the system it is bursted into seperate message objects and handled seperatly. We break input on ending punctuation AND commas following WH words.
 
 ```sh
 > My name is John. What is your name?
@@ -376,7 +376,7 @@ The reply of each gambit is concatenated back together to form the final message
 <a class="doc-anchor" name="replies" ></a>
 # Replies
 
-We have seen examples of Relpies above in most of the examples, they start with a *-* followed by text. Replies appear in their final form. Meaning how ever it is written, that will be displayed to the user, grammar, mistakes and all.
+We have seen examples of Replies above in most of the examples, they start with a *-* followed by text. Replies appear in their final form. Meaning however it is written, that will be displayed to the user – grammar, mistakes and all.
 
 ```sh
 + i say this
@@ -385,7 +385,7 @@ We have seen examples of Relpies above in most of the examples, they start with 
 - this is my final reply
 ```
 
-Replies can be stacked up and will be choosen at *RANDOM*. Once a reply has been used, we discard it and won't use it again. So it is a good idea to have a few replies for every trigger. This will also keep your dialouge less robotic and more natural.
+Replies can be stacked up and will be chosen at *RANDOM*. Once a reply has been used, we discard it and won't use it again. So it is a good idea to have a few replies for every trigger. This will also keep your dialogue less robotic and more natural.
 
 
 For longer replies that need to wrap accross lines, we use a carrot *^* to note the replies continues on to the next line.
@@ -471,7 +471,7 @@ exports.getWeather = function(city, cb) {
 ```
 
 <div class="doc-box doc-info">
-  There will be an ertire doc on custom functions, but for now, explore <b>this</b> inside the plugin and review the test suite to get a better picture of some of the things possible.
+  There will be an entire doc on custom functions, but for now, explore <b>this</b> inside the plugin and review the test suite to get a better picture of some of the things possible.
 </div>
 
 
@@ -483,3 +483,6 @@ exports.getWeather = function(city, cb) {
 # Object Reference
 
  -->
+ 
+ [RiveScript]:http://www.rivescript.com/
+ [ChatScript]:http://chatscript.sourceforge.net/
