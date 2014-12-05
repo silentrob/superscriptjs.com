@@ -2,13 +2,13 @@ doctype html
 html
   head
     title SuperScript Documentation
-    include ../includes/head
+    include ../_includes/head
   body.inner
     section.content
       header
         - active = 'guide'
-        include ../includes/header
-      include ../includes/mixins
+        include ../_includes/header
+      include ../_includes/mixins
       #overlay
       #sidebar-wrapper.stick
         ul
@@ -23,6 +23,6 @@ html
           
           
       #content
-        include library-content.md
+        include _library-content.md
 
-    include ../includes/footer
+    include ../_includes/footer

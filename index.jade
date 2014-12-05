@@ -2,7 +2,7 @@ doctype html
 html
   head
     title SuperScript - A language for writing Chat Bots
-    include includes/head
+    include _includes/head
   body
 
     a(href="https://github.com/silentrob/superscript")
@@ -11,14 +11,14 @@ html
     section#home-content
       header
         - active = 'home'
-        include includes/header
+        include _includes/header
       #overlay
-      include includes/description
+      include _includes/description
       #install-command $ npm install superscript --save
 
     section#intro
       .boxes.clearfix
-        include includes/intro.md
+        include _includes/intro.md
 
     section#usecase
       .boxes.clearfix
@@ -52,4 +52,4 @@ html
   
     //- hr(style="width:40%")
 
-    include includes/footer
+    include _includes/footer
