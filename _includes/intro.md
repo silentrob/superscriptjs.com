@@ -3,7 +3,7 @@
 <div id="intelligent">
   <h3>Intelligent</h3>
 
-  SuperScript was designed to intergrate with common sense knowledge bases, and easily extract parts of text for accuretly replying to questions asked.
+  SuperScript was designed to integrate with common sense knowledge bases, and easily extract parts of text for accurately replying to questions asked.
 
 </div>
 

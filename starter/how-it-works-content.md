@@ -12,7 +12,7 @@ SuperScript is a dialog system + bot engine for creating human-like conversation
 
 The message pipeline contains many steps, and varies from other implemetations.
 
-When input comes into the system we convert the input into a message object. The message object contains multiple purmatuations of the origional object and has been analyzed for parts of speach and question classification. The message is first handled by the reasoning system, before being sent to the dialog engine for processing.
+When input comes into the system we convert the input into a message object. The message object contains multiple permutations of the original object and has been analyzed for parts of speech and question classification. The message is first handled by the reasoning system, before being sent to the dialog engine for processing.
 
 [ConceptNet]:http://conceptnet5.media.mit.edu/
 [WordNet]:http://wordnet.princeton.edu/
