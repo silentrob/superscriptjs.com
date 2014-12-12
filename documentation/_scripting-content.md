@@ -470,19 +470,196 @@ exports.getWeather = function(city, cb) {
 
 ```
 
+You can have more than one function in a reply, so this is also valid: 
+
+```sh
++ my custom function
+- ^callthisFunction() than call ^thisFunction()
+
+```
+
+The results of the callback will replace the function name. You can even nest functions within callback replies, so this is valid too.
+
+```sh
++ my custom function
+- ^nestedAFunction() 
+
+```
+
+```javascript
+exports.nestedAFunction = function(cb) {
+  cb(null, "We ^nestedBFunction()");
+}
+
+exports.nestedBFunction = function(cb) {
+  cb(null, "are done");
+}
+```
+
+The final reply will be *"We are done"*
+
+The above example is contrived, remember you can also require the module and call the function directly from within the plugin code. This is also true for other NPM modules.
+
+
 <div class="doc-box doc-info">
   There will be an entire doc on custom functions, but for now, explore <b>this</b> inside the plugin and review the test suite to get a better picture of some of the things possible.
 </div>
 
 
-<!-- <a class="doc-anchor" name="topics" ></a>
+<a class="doc-anchor" name="topics" ></a>
 # Topics
 
+## What is a topic            
 
-<a class="doc-anchor" name="objref" ></a>
-# Object Reference
+A Topic is way to group triggers and replies together in some arbitrary, or logical way. There are no limit to how many topics you create, however navigating from topic to topic is done explicitly. You can think if a topic as a scope.
 
- -->
+<a class="doc-anchor" name="random"></a>
+## The 'random' topic
+  
+All dialogue belongs to a topic and even if you do not use any topics, those triggers and replies will be stored in the random topic.
+
+### Creating a new topic
+
+Topics are created by using the follow syntax
+
+```sh
+> topic topic_name
+  + message as normal
+  - reply as normal
+< topic
+
+```
+
+While topic rules can be combined and nested, see includes below, they can not be nested in the file. *This would be invalid*:
+
+```sh
+> topic topic_a
+  + message as normal
+  - reply as normal
+  > topic topic_b
+    + some other message
+    - some other reply
+  < topic
+< topic
+
+```
+
+### Changing to a new topic
+To switch to a new topic you just need to set the new topic name in the reply.
+
+```sh
+  + I like animals
+  - Me to {topic=animals}
+```
+
+If you are in a custom plugin you can also change topics directly by accessing the user object method *setTopic(...)*.
+
+```javascript
+exports.somefunction = function(cb) {
+  this.user.setTopic("newTopic")
+  cb(null, "")
+}
+```
+
+<div class="doc-box doc-info">
+  It is best practice to have one topic per file, however topics and span files.
+</div>
+
+<a class="doc-anchor" name="hooks"></a>
+## Topic hooks
+
+There are two special topics that run, one before your current topic, and one after.
+We call them *pre* and *post* hooks or topics. If you need some trigger to be tested on every pass either before or after the regular triggers, this is where you would put it.
+
+Pre and Post topics have a slightly different syntax, but function the same as normal topics.
+```sh
+> pre
+  + pre hook
+  - yep pre hook
+< pre
+
+
+> post
+  + post hook
+  - yep post hook
+< post
+```
+
+As you can see the keyword topic has been replaced with 'pre' and 'post'.
+  
+<a class="doc-anchor" name="flags"></a>
+## Topic flags
+
+Topics can have a flag attached to them that modifies its behaviour. *keep* and *nostay* 
  
- [RiveScript]:http://www.rivescript.com/
- [ChatScript]:http://chatscript.sourceforge.net/
+### keep
+
+Keep is designed to disable to default behavour of exausting triggers, if you want the bot to say things over and over again, and apply keep just after the topic definition.
+  
+```sh
+ > topic:keep keeptopic
+  + i have one thing to say
+  - I will keep saying it.
+< topic
+```
+
+### nostay
+
+Nostay can be used to bounce from one topic, but return back to the prevoius topic right after.
+It might be a good way to break the flow up and allow the possibility to change the topic, but not do so forcefully. 
+
+```sh
+ > topic random
+  + do you like ice cream
+  - I do {topic=icecream}
+< topic
+
+
+ > topic:nostay icecream
+  + i like *
+  - my favourite flavour is vanilla, but we are off topic.
+< topic
+```
+
+
+<a class="doc-anchor" name="include"></a>
+## Topic includes
+
+Topics can include triggers from other topics as well, this is done though either including them or inheriting them. 
+
+```sh
+> topic base
+  + random thing
+  - random reply...
+< topic
+
+> topic extbase includes base
+  + more random things
+  - and more random replies
+< topic
+
+```
+
+<a class="doc-anchor" name="inherits"></a>
+## Topic Inherits
+
+```sh
+> topic base
+  + i like *
+  - I like everything too
+< topic
+
+> topic vehicle inherits base
+  + i like *
+  - I like vehicles too
+< topic
+
+> topic car inherits vehicle
+  + i like *
+  - I like cars too
+< topic
+```
+
+<!-- <a class="doc-anchor" name="objref" ></a>
+# Object Reference
+ -->
