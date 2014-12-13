@@ -637,8 +637,9 @@ Topics can include triggers from other topics as well, this is done though eithe
   + more random things
   - and more random replies
 < topic
-
 ```
+
+If you are familiar with programming, this concept is similar to the mixin pattern.
 
 <a class="doc-anchor" name="inherits"></a>
 ## Topic Inherits
@@ -647,6 +648,9 @@ Topics can include triggers from other topics as well, this is done though eithe
 > topic base
   + i like *
   - I like everything too
+
+  + something clever
+  - something witty back
 < topic
 
 > topic vehicle inherits base
@@ -659,6 +663,8 @@ Topics can include triggers from other topics as well, this is done though eithe
   - I like cars too
 < topic
 ```
+
+When you inherit from the next topic, triggers that match get replaced. In the example above, if you are in the *car* topic, the "i like" trigger is overriding the same "i like" trigger from vehicle and base. However, you still have access to the *something clever* base trigger.
 
 <!-- <a class="doc-anchor" name="objref" ></a>
 # Object Reference
