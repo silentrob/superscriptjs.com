@@ -7,12 +7,12 @@ SuperScript is a dialog system + bot engine for creating human-like conversation
 * Multi-User Platform for easy intergration with Group Chat systems
 * Message Pipeline with POS Tagging, Sentence Analysys and Question Tagging
 * Extensible Plugin Architecture
+* A built in Graph database using LevelDB and each user has their own SubLeve DB.
+* [ConceptNet](http://conceptnet5.media.mit.edu/) General purpose database for knoledge extraction.
+* [WordNet](http://wordnet.princeton.edu/) DB for word and concept expansion.
 
 ## How it works
 
 The message pipeline contains many steps, and varies from other implemetations.
 
 When input comes into the system we convert the input into a message object. The message object contains multiple permutations of the original object and has been analyzed for parts of speech and question classification. The message is first handled by the reasoning system, before being sent to the dialog engine for processing.
-
-[ConceptNet]:http://conceptnet5.media.mit.edu/
-[WordNet]:http://wordnet.princeton.edu/

@@ -666,6 +666,117 @@ If you are familiar with programming, this concept is similar to the mixin patte
 
 When you inherit from the next topic, triggers that match get replaced. In the example above, if you are in the *car* topic, the "i like" trigger is overriding the same "i like" trigger from vehicle and base. However, you still have access to the *something clever* base trigger.
 
+
+<a class="doc-anchor" name="debug"></a>
+## Debugging
+
+Making sure everything is working can be time consuming and frustrating. Start with the basics, check for warnings and error messages. All of SuperScript uses [debug](https://github.com/visionmedia/debug) and should make finding the problem much easier.
+
+```sh
+$  DEBUG=*,-Utils node_modules/superscript/bin/parse.js 
+```
+
+This says, lets see everything except things from the Util library. During the parse setup, we will load Normalizer, Parse each line, then sort the results prior to saving them.
+
+Once you are confident all files, have been properly parsed you will have a data.json file. Or some other file if you choose to output to a different name.
+
+Make sure the file is not empty, null or incomplete. It should have a few sections and each trigger you entered will be in their along with extra metadata.
+
+Start the bot in debug mode.
+
+```sh
+$  DEBUG=*,-Utils node server.js
+```
+Assuming you copied over the telnet server example.
+Here is output from my example bot Brit.
+
+```sh
+DEBUG=*,-Utils node server.js 
+Script Loading Plugin +0ms ./plugins oppisite
+Script Loading Plugin +3ms ./plugins rhymes
+Script Loading Plugin +0ms ./plugins syllable
+Script Loading Plugin +0ms ./plugins letterLookup
+Script Loading Plugin +0ms ./plugins wordLength
+Script Loading Plugin +0ms ./plugins nextNumber
+Script Loading Plugin +1ms ./plugins createFact
+Script Loading Plugin +0ms ./plugins resolveAdjective
+Script Loading Plugin +0ms ./plugins evaluateExpression
+Script Loading Plugin +0ms ./plugins numToRoman
+Script Loading Plugin +0ms ./plugins numToHex
+Script Loading Plugin +0ms ./plugins numToBinary
+Script Loading Plugin +0ms ./plugins numMissing
+Script Loading Plugin +0ms ./plugins numSequence
+Script Loading Plugin +0ms ./plugins num
+Script Loading Plugin +0ms ./plugins changetopic
+Script Loading Plugin +0ms ./plugins changefunctionreply
+Script Loading Plugin +0ms ./plugins getDOW
+Script Loading Plugin +0ms ./plugins getDate
+Script Loading Plugin +0ms ./plugins getDateTomorrow
+Script Loading Plugin +0ms ./plugins getSeason
+Script Loading Plugin +0ms ./plugins getTime
+Script Loading Plugin +0ms ./plugins getTimeOfDay
+Script Loading Plugin +0ms ./plugins getDayOfWeek
+Script Loading Plugin +0ms ./plugins getMonth
+Script Loading Plugin +0ms ./plugins save
+Script Loading Plugin +0ms ./plugins wordnetDefine
+Script Loading Plugin +0ms ./plugins plural
+Script Loading Plugin +224ms /Users/robellis/projects/bot/brit/plugins aGender
+Script Loading Plugin +0ms /Users/robellis/projects/bot/brit/plugins aBaby
+Script Loading Plugin +0ms /Users/robellis/projects/bot/brit/plugins aLocation
+Script Loading Plugin +0ms /Users/robellis/projects/bot/brit/plugins aGroup
+Script Loading Plugin +0ms /Users/robellis/projects/bot/brit/plugins weather
+Normalizer Loaded File +0ms { key: '_sys', file: 'systemessentials.txt' }
+Normalizer Loaded File +4ms { key: '_extra', file: 'substitutes.txt' }
+Normalizer Loaded File +116ms { key: '_contractions', file: 'contractions.txt' }
+Normalizer Loaded File +14ms { key: '_interjections', file: 'interjections.txt' }
+Normalizer Loaded File +65ms { key: '_britsh', file: 'british.txt' }
+Normalizer Loaded File +198ms { key: '_spellfix', file: 'spellfix.txt' }
+Normalizer Loaded File +314ms { key: '_texting', file: 'texting.txt' }
+Normalizer Done Reading Subs +7ms
+Normalizer Done Loading files +1ms
+Script Questions Loaded +751ms
+Script System Loaded, waiting for replies +0ms
+TCP server running on port 2000.
+
+```
+
+This walks through the entire initialization process, showing various plugins loaded and is waiting to start chatting.
+Once I open a telnet connection, we get much more output.
+
+The message will walk though every piece of the framework showing how it gets to the final output. Usually the most important part of this process is to see what the message object looks like given your input, and how *GetReply* tries to match it with a given trigger.
+
+```sh
+GetReply Searching their topic 'random' for a match... +2ms
+GetReply itorTopic +0ms __pre__
+GetReply itorTopic +0ms random
+GetReply Try to match 'test' against 9b9265b ((?:.*?)) +1ms
+GetReply Try to match 'test' against 9b9265b ((?:.*?)) +0ms
+GetReply Found a match! +0ms
+GetReply Match found in Topic +0ms random
+GetReply itorTopic +0ms __post__
+GetReply Did we match? +0ms { trigger: '(?:.*?)',
+options: { isQuestion: false, qType: false, qSubType: false },
+reply: { '37c53b58': 'okay ~somethingmadeup {topic=car}' } }
+GetReply Looking at choices: +1ms [ 'okay ~somethingmadeup {topic=car}' ]
+GetReply We like this choice +0ms okay ~somethingmadeup {topic=car}
+```
+
+If you recall, the system will process pre topics, than your current topic, followed by the post topics, in our case the default random topic.
+
+If you notice for each trigger, we will have two 
+
+```sh
+GetReply Try to match 'test' against 9b9265b ((?:.*?)) +1ms
+```
+
+This is because we will try to match against the given input as well as the input lemmatized. 
+
+Finally, we see we do indeed have a match, and the system will show us what reply it choose, prividing we had more than one.
+
+
+
+
+
 <!-- <a class="doc-anchor" name="objref" ></a>
 # Object Reference
  -->
