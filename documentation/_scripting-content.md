@@ -416,7 +416,7 @@ Sometimes you want to redirect from one reply to another.
 
 ```sh
 + hello friend
-- {redirect=greeting}
+@greeting
 
 + greeting
 - Hello
@@ -425,12 +425,12 @@ Sometimes you want to redirect from one reply to another.
 
 ```
 
-Here is another use for redirecting.
+Here is another use for redirecting inline.
 
 ```sh
 ?:WH *
-- I'm not sure. {redirect=ask}
-- No idea... {redirect=ask}
+- I'm not sure. {@ask}
+- No idea... {@ask}
 
 + ask
 - How old are you?
