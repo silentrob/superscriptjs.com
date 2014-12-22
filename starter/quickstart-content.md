@@ -1,37 +1,38 @@
 
-# Installing Dependencies
+<!-- # Installing Dependencies
 
 SuperScript has a dependency on <a href="https://github.com/silentrob/conceptnet" title="Helps setup Concept 4 Database with MySQL and provides some sugar for getting some data out">ConceptNet Bridge</a> and requires <a href="http://mysql.com">MySQL</a>, and manually importing the SQL database.
-
+ -->
 
 # Installing
 
-First, create a directory to hold your bot, if you haven't already done so, and make that your working directory.
+First install superscript globally
+
 ```sh
-$ mkdir mybot
+$ npm install superscript -g
+```
+
+Then generate a new bot with either the telnet or slack client
+
+```sh
+$ gen mybot --client slack
 $ cd mybot
 ```
 
-Create a `package.json` file in the directory of interest, if it does not exist already, with the `npm init` command.
+Finally, install the dependencies locally.
 
 ```sh
-$ npm init
+$ npm install
 ```
 
-Install SuperScript in the app directory and save it in the dependecies list:
-
-```sh
-$ npm install superscript --save
-```
 
 # Your first bot
 
-Create a Topic Folder - This is where all the conversations rules will go
+Open the Topic Folder - This is where all the conversations rules will go
 
 ```sh
-$ mkdir topics
+$ cd topics
 ```
-
 
 Creating your first rule. Create a main.ss in your topic folder with the following text. <br/>[Learn more about rules.](/documentation/scripting)
 
@@ -45,7 +46,7 @@ Creating your first rule. Create a main.ss in your topic folder with the followi
 Superscript uses a two step compile / run process to speed up the initial app load time.
 
 ```sh
-$ ./node_nodules/superscript/bin/parse
+$ parse
 
 ```
 
@@ -67,37 +68,10 @@ Options:
 
 ## Creating your first bot
 
-Lets use the telnet example server to test out our new bot.
-
-```sh
-$ cp ./node_modules/superscript/example/telnet.js ./bot.js
-
-```
-
-Run the telnet server
-
-```sh
-$ node bot.js
-
-```
-
-In a new window, create a telnet connection.
-
-```sh
-$ telnet localhost 2000
-
-Trying 127.0.0.1...
-Connected to localhost.
-Escape character is '^]'.
-Welcome to the Telnet server!
-Hello 127.0.0.1:53878! Type /quit to disconnect.
-
-You>
-
-```
+SuperScript comes with two clients, a Slack client, and Telnet Client. They are included by initing a new project with the --client switch.
 
 
-## Help I followed the steps and nothing works!
+## Help! I followed the steps and nothing works!
 Read the debugging section at the bottom of the [scripting docs](/documentation/scripting#debug) and if your still stuck, create an issue on the [github repo](https://github.com/silentrob/superscript/issues). 
 
 
