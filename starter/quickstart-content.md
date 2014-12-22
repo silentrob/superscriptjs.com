@@ -15,7 +15,7 @@ $ npm install superscript -g
 Then generate a new bot with either the telnet or slack client
 
 ```sh
-$ gen mybot --client slack
+$ init mybot --client slack
 $ cd mybot
 ```
 
