@@ -500,6 +500,36 @@ The final reply will be *"We are done"*
 
 The above example is contrived, remember you can also require the module and call the function directly from within the plugin code. This is also true for other NPM modules.
 
+### what is `this`
+Custom functions are called in their own scope. This is done to give you control over most of the imprtant bits of the system.
+
+`this.message`
+
+We expose the entire message object which is broken down 12 diffent ways and includes all the words in raw and lemma form, all the parts-of-speech and even compound 'things' like entities and dates.
+
+`this.user`
+
+The user who sent the message as we know them. This will allow us to see the past messages in their history, how many conversaion replies we have had, and when the conversation started.
+
+We also have direct access to the users memory.
+
+`this.user.memory` and `this.user.memory.db`
+
+From the user memory you can query a sub-level graph DB for known facts the user may have shared or save new ones.
+
+`this.botfacts` and `this.botfacts.db`
+
+This is identical to the sub-level graph for the user except it contains only things about the bot and can be loaded on init.
+
+`this.facts` and `this.facts.db`
+
+This is simular to the users sub-level graph except it contains all the global facts.
+
+`this.topicSystem` 
+
+We expose the topic system to the plugins in the even you want to create a new topic reply or trigger dynamically.
+
+Because you are in the fun wild world of Node.js you can also install any library from NPM and use it, and since the plugs are async, you can even make calls to Databases, API's or other remote web services.
 
 <div class="doc-box doc-info">
   There will be an entire doc on custom functions, but for now, explore <b>this</b> inside the plugin and review the test suite to get a better picture of some of the things possible.
@@ -511,7 +541,8 @@ The above example is contrived, remember you can also require the module and cal
 
 ## What is a topic            
 
-A Topic is way to group triggers and replies together in some arbitrary, or logical way. There are no limit to how many topics you create, however navigating from topic to topic is done explicitly. You can think if a topic as a scope.
+A Topic is way to group triggers and replies together in some arbitrary, or logical way. There are no limit to how many topics you create. Topics have been complety redesigned after Version 0.2.0. SuperScript will how continue to try to find matches for your input outside of your current topic.
+
 
 <a class="doc-anchor" name="random"></a>
 ## The 'random' topic
@@ -523,14 +554,14 @@ All dialogue belongs to a topic and even if you do not use any topics, those tri
 Topics are created by using the follow syntax
 
 ```sh
-> topic topic_name
+> topic topic_name (topic_keyword1 topic_keyword2 topic_keywordN)
   + message as normal
   - reply as normal
 < topic
 
 ```
 
-While topic rules can be combined and nested, see includes below, they can not be nested in the file. *This would be invalid*:
+Topics can not be nested in the file. *This would be invalid*:
 
 ```sh
 > topic topic_a
@@ -590,7 +621,7 @@ As you can see the keyword topic has been replaced with 'pre' and 'post'.
 <a class="doc-anchor" name="flags"></a>
 ## Topic flags
 
-Topics can have a flag attached to them that modifies its behaviour. *keep* and *nostay* 
+Topics can have a flag attached to them that modifies its behaviour. *keep*, *system* and *nostay* 
  
 ### keep
 
@@ -621,51 +652,103 @@ It might be a good way to break the flow up and allow the possibility to change 
 < topic
 ```
 
+### system
 
-<a class="doc-anchor" name="include"></a>
-## Topic includes
-
-Topics can include triggers from other topics as well, this is done though either including them or inheriting them. 
+System topics do not appear in the normal topic flow and you must provide your own way to access them, usually the `^respond()` function workes great for that.
 
 ```sh
-> topic base
-  + random thing
-  - random reply...
+ > topic random
+  + * who *
+  - ^respond(who)
+
+  + * what *
+  - ^respond(what)
 < topic
 
-> topic extbase includes base
-  + more random things
-  - and more random replies
+
+ > topic:system who
+  + who is *
+  - I'm not sure I know you're talking about.
+< topic
+
+ > topic:system what
+  + what do you like *
+  - I like all sorts of things...
+< topic
+```
+<a class="doc-anchor" name="flow"></a>
+## Topic Flow
+
+As noted eariler, the topic logic has improved to allow for easier scripting, and your bot should have access to more gambits. It is imprtant that your topics have well defined keywords, this will help when trying to figure out what topic to check nect.
+
+The basic flow for each message cycle is as follows. *Pre topic, current topic, next best matched topic(s), any remaining topics, post topic*. Keep in mind that system topics will never appeat in the normal flow.
+
+You can match more than once. Providing your match does not produce any output, the system will keep looking for matches. This is extra helpful when you have plugins or functions that try to do extra parsing on the message or make assumptions that may be false.
+
+
+<a class="doc-anchor" name="functions"></a>
+## Functions
+
+This sections covers a few built-in or commonly used functions to help your crafting.
+
+### Flow related
+
+#### ^respond()
+The `^respond(topic)` function is used in the reply it takes the current input and check it against the selected topic more matches. Once it gets to the end of the topic it will unwind its way back and continue checking in the normal path. There is an example of this function in the system flag above.
+
+Consider
+
+```sh
+ > topic random
+  + * i *
+  - ^respond(i_topic)
+
+  + * you *
+  - ^respond(you_topic)
+
+  + * we *
+  - ^respond(we_topic)
+
+< topic
+
+
+ > topic i_topic
+  + i am *
+  - ^respond(i_am_topic)
+
+  + i was *
+  - ^respond(i_was_topic)
+
+  + i need *
+  - ^respond(i_need_topic)
+
+< topic
+
+ > topic i_am_topic
+  + i am on fire
+  - That's not good.
+
+  + i am a wimp
+  - You should eat your veggies.
 < topic
 ```
 
-If you are familiar with programming, this concept is similar to the mixin pattern.
+#### ^topicRedirect()
 
-<a class="doc-anchor" name="inherits"></a>
-## Topic Inherits
+`^topicRedirect(topic,trigger)` is used in the reply and is very simular to reply redirects except they redirect you to a new topic.
 
 ```sh
-> topic base
-  + i like *
-  - I like everything too
 
-  + something clever
-  - something witty back
+  + say something random
+  - ^topicRedirect(something_random, __say__)
+
+ > topic something_random
+  + __say__
+  - Wind on the face is not good for you.
+  - I watched Mr. Dressup as a kid.
 < topic
 
-> topic vehicle inherits base
-  + i like *
-  - I like vehicles too
-< topic
-
-> topic car inherits vehicle
-  + i like *
-  - I like cars too
-< topic
 ```
-
-When you inherit from the next topic, triggers that match get replaced. In the example above, if you are in the *car* topic, the "i like" trigger is overriding the same "i like" trigger from vehicle and base. However, you still have access to the *something clever* base trigger.
-
 
 <a class="doc-anchor" name="debug"></a>
 ## Debugging

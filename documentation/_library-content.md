@@ -40,49 +40,16 @@ This is the main way to communcate with your bot.
 bot.reply(user_id, message, callback);
 ```
 
-### userConnect Method
-```javascript
-/**
-Connecting a user to the system will register the user prior to the first message being sent. This means the bot can reach out to the user BEFORE any conversation has started.
-It makes the bot aware of who is within earshot.
-- user_id, String, User Token
-**/
-bot.userConnect(user_id);
-```
-
-### userDisconnect Method
-```javascript
-/**
-This removes a connected user from the system.
-- user_id, String, User Token
-**/
-bot.userDisconnect(user_id);
-```
-
 ### getUser Method
 ```javascript
 /**
 getUser will return the user object from the bot. It is primarily a helper function.
 - user_id, String, User Token
+- callback err, user object
 **/
-bot.getUser(user_id);
+bot.getUser(user_id, callback);
 
 ```
-<a class="doc-anchor" name="events"></a>
-## Events
-SuperScript will emit events as well.
-
-### message event
-
-```javascript
-bot.on('message', function(user_id, bot_message){
-	console.log(user_id, bot_message);
-});
-
-```
-
-If your script has things for the bot to say first, or during long awkward pauses, they will be sent to this event.
-
 
 <a class="doc-anchor" name="example"></a>
 ## Example 
