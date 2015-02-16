@@ -4,6 +4,12 @@ html
     title SuperScript - A language for writing Chat Bots
     meta(name="description" content="SuperScript Create Human like chatbots with real AI")
     meta(name="keywords" content="superscript AMIL chatscript chatterbot eliza elizabot chatbot ai artificaial intelligent loebner")
+    
+    meta(property='og:title', content='SuperScript - A language for writing Chat Bots')
+    meta(property='og:image', content='/img/realtime.png')
+    meta(property='og:site_name', content='SuperScript')
+    meta(property='og:description', content="SuperScript Create Human like chatbots with real AI")
+        
     include _includes/head
   body
 
@@ -16,7 +22,14 @@ html
         include _includes/header
       #overlay
       include _includes/description
-      #install-command $ npm install superscript -g
+      //- #install-command $ npm install superscript -g
+
+
+    section
+      div
+        a(href="/starter/quickstart")
+          img(style="width:48%", src="/img/realtime.png" )
+          img(style="width:48%", src="/img/gambit.png" )
 
     section#intro
       .boxes.clearfix
@@ -28,7 +41,7 @@ html
           svg.centerthing(width="105px" height="105px" xmlns="http://www.w3.org/2000/svg")
             image(xlink:href="/img/man465.svg" x="0" y="0" height="105px" width="105px" )
           h3(style="margin-top:18px") Web Friendly
-          p SuperScript works on the web over WebSocket, HTTP or TCP.
+          p SuperScript works on the web over WebSocket, HTTP or TCP. It comes with a built in Telnet Client. <a href="https://github.com/silentrob/superscript-websocket-demo">And WebSocket Example client.</a>
 
         //- div
         //-   svg.centerthing(width="90px" height="90px" xmlns="http://www.w3.org/2000/svg")
@@ -46,7 +59,9 @@ html
           //- svg.centerthing(width="90px" height="90px" xmlns="http://www.w3.org/2000/svg")
           //-   image(xlink:href="/img/slack-sticker.svg" x="0" y="0" height="90px" width="90px")
           h3 Works with Slack
-          p Extend your team collaboration with an intelligent office assistant.
+          p Extend your team collaboration with an intelligent office assistant. Check out the article on setting up <a href="https://medium.com/@rob_ellis/slack-superscript-rise-of-the-bots-bba8506a043c" target="_blank">Slack Intergration.</a>
+
+
 
   section#getinvolved
     h3 Want to contribute or get involved?

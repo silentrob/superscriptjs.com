@@ -41,7 +41,7 @@
 ## What is this thing...
 SuperScript is a dialogue scripting language and bot engine for creating chat bots. This software could be used to create a personal assistant like Siri or Google Now, however SuperScript also supports fully interactive style chatting as well and could reach out without being initiated.
 
-If you are familiar to conversational scripting software, SuperScript is simular to [RiveScript] with its ease of use in Syntax and [ChatScript] for its expressive and powerful nature.
+If you are familiar to conversational scripting software, SuperScript is simular to [RiveScript](http://rivescript.com) with its ease of use in Syntax and [ChatScript](http://sourceforge.net/projects/chatscript/) for its expressive and powerful nature.
 
 <a class="doc-anchor" name="triggers" ></a>
 # Triggers
@@ -441,6 +441,33 @@ Here is another use for redirecting inline.
 
 By doing this we can break the reply into smaller pieces and create more dynamic / expressive replies that keep the conversation rolling.
 
+<a class="doc-anchor" name="oob"></a>
+## Out of bound data
+
+Out of bound replies data is used to pass extra metadata back to the client. The reply object can have extra properties added on from any reply.
+
+```sh
++ can you (txt|sms) me the address
+- {^hasNumber(true)} ^addMessageProp(medium,txt) 34345 Old Yale Rd.
+- {^hasNumber(false)} I need your number first.
+```
+The resulting reply object look something like this:
+
+```js
+{ 
+    string: "34345 Old Yale Rd.", 
+    medium: "txt", 
+    createdAt: "..." 
+}
+```
+
+The function `^addMessageProp(key,value)` can be used from any reply or you can augment the message props variable directly from within any custom function.
+
+```javascript
+  this.message.props['key'] = value;
+```
+
+
 <a class="doc-anchor" name="custom"></a>
 ## Custom functions
 
@@ -499,6 +526,44 @@ exports.nestedBFunction = function(cb) {
 The final reply will be *"We are done"*
 
 The above example is contrived, remember you can also require the module and call the function directly from within the plugin code. This is also true for other NPM modules.
+
+<a class="doc-anchor" name="filters"></a>
+## Filter functions
+
+<div class="doc-box doc-info">
+ In the Community Editor Filters have their own text box with an auto complete.
+</div>
+
+
+Filters are used to filter out replies or triggers from being used. They are a like using conditional logic in your app. Filters are make use of Plugins that return a true / false value.
+
+```sh
++ when I see this
+- {^someTruthFunction()} Say this
+- {^someTruthFunction()} Say that
+
+```
+
+In this example the someTruthFunction is evaluated when we are making the decision to pick a reply. Lets see a real example based on one of the Loebner questions.
+
+```sh
++ my name is <name>
+- {^hasName(false)} ^save(name,<cap1>) Nice to meet you, <cap1>.
+- {^hasName(true)} I know, you already told me your name.
+```
+
+hasName checks to see if we know the users name, and if we don’t, (false) then we say “Nice to meet you <name>” and we save it using the save function. Then when we hit this trigger again, hasName(true) will be filtered in, and reply with a cheeky remark. “I know, you already told me your name.”
+
+Filter functions are not just for replies, and they can be applied to triggers too, and I see extending this to topics as well, but we can save that for another release.
+
+```sh
++ {^not(fish)} I like *
+- Thats great.
+```
+
+The syntax is identical to filters in replies, this function not(…) will return false if the message contains the word fish.
+
+
 
 ### what is `this`
 Custom functions are called in their own scope. This is done to give you control over most of the imprtant bits of the system.

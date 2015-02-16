@@ -4,7 +4,23 @@
 SuperScript has a dependency on [Node JS](nodejs.org) and [Mongo](http://www.mongodb.org/). Please make sure they are install prior to beginning.
 
 
-# Installing
+# Installing the Realtime Editor (NEW)
+
+SuperScript now has a fancy editor for crafting dialogue and authoring bots. The documentaion on scripting will be applicable to both approaches, however parsing text files eventually be completly replaced by the SSC Editor in a future release.
+
+```sh
+$ git clone https://github.com/silentrob/superscript-editor.git
+cd superscript-editor
+npm install
+npm start
+
+Then Open your browser to http://localhost:3000
+```
+
+At this point, you are done. Just open your browser and start editing / chatting.
+
+
+# Alternatively -- Installing the Library
 
 First install superscript globally
 
@@ -15,7 +31,7 @@ $ npm install superscript -g
 Then generate a new bot with either the telnet or slack client
 
 ```sh
-$ init mybot --client slack
+$ bot-init mybot --client slack
 $ cd mybot
 ```
 
@@ -26,7 +42,7 @@ $ npm install
 ```
 
 
-# Your first bot
+## Your first bot
 
 Open the Topic Folder - This is where all the conversations rules will go
 
@@ -66,7 +82,7 @@ Options:
 
 ```
 
-## Creating your first bot
+### Creating your first bot
 
 SuperScript comes with two clients, a Slack client, and Telnet Client. They are included by initing a new project with the --client switch.
 

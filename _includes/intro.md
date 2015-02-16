@@ -16,7 +16,7 @@
 
 <div id="scripting">
   <h3>Easy-to-use</h3>
-  SuperScript exposes a simple scripting language for creating chat bots easy and fun.
+  SuperScript comes with a <a href="https://github.com/silentrob/superscript-editor">Realtime Web Editor</a> for authoring Bots.
 
 </div>
 

@@ -2,6 +2,11 @@ doctype html
 html
   head
     title SuperScript Documentation
+    meta(property='og:title', content='SuperScript Documentation')
+    meta(property='og:image', content='/img/realtime.png')
+    meta(property='og:site_name', content='SuperScript')
+    meta(property='og:description', content="SuperScript Create Human like chatbots with real AI")
+
     include ../_includes/head
   body.inner
     section.content
@@ -45,6 +50,7 @@ html
           li
             a(href="#wordnet") Wordnet Expansion
 
+
           li.heading
             a(href="#replies") Replies 
           li
@@ -52,7 +58,11 @@ html
           li
             a(href="#redirect") Reply redirect {@redirect} 
           li
+            a(href="#oob") Out of Bound
+          li
             a(href="#custom") Custom Functions
+          li
+            a(href="#filters") Filter Functions
 
           li.heading
             a(href="#topics") Topics
