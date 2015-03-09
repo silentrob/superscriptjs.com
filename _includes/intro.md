@@ -23,6 +23,6 @@
 <div id="foss">
   <h3>Open Source</h3>
 
-  Baked by the most liberal Open Source License available. MIT. Built by the same people behind <a href="https://github.com/NaturalNode/natural">Node/Natural</a>.
+  Backed by the most liberal Open Source License available. MIT. Built by the same people behind <a href="https://github.com/NaturalNode/natural">Node/Natural</a>.
 
 </div>
