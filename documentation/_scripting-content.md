@@ -39,7 +39,7 @@
 # Scripting Documentation
 
 ## What is this thing...
-SuperScript is a dialogue scripting language and bot engine for creating chat bots. This software could be used to create a personal assistant like Siri or Google Now, however SuperScript also supports fully interactive style chatting as well and could reach out without being initiated.
+SuperScript is a dialogue scripting language and bot engine for creating chat bots. This software could be used to create a personal assistant like Siri or Google Now, however SuperScript also supports fully interactive style chatting.
 
 If you are familiar to conversational scripting software, SuperScript is simular to [RiveScript](http://rivescript.com) with its ease of use in Syntax and [ChatScript](http://sourceforge.net/projects/chatscript/) for its expressive and powerful nature.
 
@@ -170,7 +170,7 @@ If you have more than one thing you want to capture, just add a number to the `<
 ```
 
 <div class="doc-box doc-info">
-Only wildcards that are NOT ZERO length can be used to capture input. So wildcards and variable length wildcards will not capture the text back, but exact length wildcards and optionals will capture the input.
+Only wildcards that are NOT ZERO length can be used to capture input. So wildcards will not capture the text back, but exact length wildcards and optionals will capture the input.
 </div>
 
 
