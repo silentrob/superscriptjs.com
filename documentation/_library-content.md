@@ -56,6 +56,13 @@ bot.getUser(user_id, callback);
 Here is the complete minimum example:
 ```javascript
 var superscript = require("superscript");
+var mongoose = require("mongoose");
+
+// Connect to your Topic Database.
+mongoose.connect('...');
+
+options = {};
+options['mongoose'] = mongoose;
 
 new superscript({}, function(err, bot){
 	bot.reply("exampleUser", "Hello Bot", function(err, reply){
