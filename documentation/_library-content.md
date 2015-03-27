@@ -17,13 +17,12 @@ We are assuming you have already setup node.js and have NPM installed (included 
 var superscript = require("superscript");
 
 /**
-- conversationJSONData: A JSON file of all the scripted conversation compiled down to one file. This file is generated from the parse util in ./bin/parse
 
 - options is a object litteral.
 - callback is a function that returns callback(err, bot)
 
 **/
-new superscript(conversationJSONData, options, callback);
+new superscript(options, callback);
 
 ```
 
@@ -58,7 +57,7 @@ Here is the complete minimum example:
 ```javascript
 var superscript = require("superscript");
 
-new superscript('./data.json', {}, function(err, bot){
+new superscript({}, function(err, bot){
 	bot.reply("exampleUser", "Hello Bot", function(err, reply){
 		console.log(reply);
 	})
