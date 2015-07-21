@@ -102,6 +102,7 @@ $(function(){
     $('#lb-menu').dropit({ action: 'click' })
     $('#npm-menu').dropit({ action: 'click' })
     $('#src-menu').dropit({ action: 'click' })
+    $('#chat-menu').dropit({ action: 'click' });
   }
   else {
     $('#application-menu').dropit({ action: 'mouseenter' })
@@ -112,6 +113,7 @@ $(function(){
     $('#lb-menu').dropit({ action: 'mouseenter' })
     $('#npm-menu').dropit({ action: 'mouseenter' })
     $('#src-menu').dropit({ action: 'mouseenter' })
+    $('#chat-menu').dropit({ action: 'mouseenter' });
 
   }
 
