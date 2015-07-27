@@ -1,0 +1,20 @@
+{
+  "name": "superscriptjs.com",
+  "version": "0.0.0",
+  "description": "The website for SuperScript, a dialogue engine for creating chat bots.",
+  "homepage": "http://superscriptjs.com",
+  "private": true,
+  "author": "Rob Ellis <rob@silentrob.me> (http://silentrob.me)",
+  "repository": "git@github.com:silentrob/superscriptjs.com.git",
+  "keywords": [],
+  "scripts": {
+    "test": "echo \"Error: no test specified…yet! Pull requests on silentrob/superscriptjs.com are always appriciated.\"",
+    "start": "harp server",
+    "compile": "harp compile",
+    "deploy": "surge ./ --build"
+  },
+  "devDependencies": {
+    "harp": "0.17.0",
+    "surge": "latest"
+  }
+}
