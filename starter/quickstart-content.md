@@ -88,7 +88,7 @@ SuperScript comes with two clients, a Slack client, and Telnet Client. They are 
 
 
 ## Help! I followed the steps and nothing works!
-Read the debugging section at the bottom of the [scripting docs](/documentation/scripting#debug) and if your still stuck, create an issue on the [github repo](https://github.com/silentrob/superscript/issues). 
+Read the debugging section at the bottom of the [scripting docs](https://github.com/silentrob/superscript/wiki) and if your still stuck, create an issue on the [github repo](https://github.com/silentrob/superscript/issues). 
 
 
 
