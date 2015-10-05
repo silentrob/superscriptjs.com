@@ -1,12 +1,12 @@
 
 # Installing Dependencies
 
-SuperScript has a dependency on [Node JS](nodejs.org) and [Mongo](http://www.mongodb.org/). Please make sure they are install prior to beginning.
+SuperScript has a dependency on [Node JS](nodejs.org) and [Mongo](http://www.mongodb.org/). Please make sure they are installed prior to beginning.
 
 
 # Installing the Realtime Editor (NEW)
 
-SuperScript now has a fancy editor for crafting dialogue and authoring bots. The documentaion on scripting will be applicable to both approaches, however parsing text files eventually be completly replaced by the SSC Editor in a future release.
+SuperScript now has a fancy editor for crafting dialogue and authoring bots. The documentation on scripting will be applicable to both approaches, however parsing text files eventually be completely replaced by the SSC Editor in a future release.
 
 ```sh
 $ git clone https://github.com/silentrob/superscript-editor.git
@@ -82,17 +82,17 @@ Options:
 
 ```
 
-### Creating your first bot
+## Creating your first bot
 
 SuperScript comes with two clients, a Slack client, and Telnet Client. They are included by initing a new project with the --client switch.
 
 
 ## Help! I followed the steps and nothing works!
-Read the debugging section at the bottom of the [scripting docs](https://github.com/silentrob/superscript/wiki) and if your still stuck, create an issue on the [github repo](https://github.com/silentrob/superscript/issues). 
+Read the debugging section at the bottom of the [scripting docs](https://github.com/silentrob/superscript/wiki) and if your still stuck, create an issue on the [github repo](https://github.com/silentrob/superscript/issues).
 
 
 
 <!-- <div class="doc-box doc-info">
 Node modules installed with the `--save` option are added to the `dependencies` list in the `package.json` file.
-Then using `npm install` in the app directory will automatically install modules in the dependecies list.
+Then using `npm install` in the app directory will automatically install modules in the dependencies list.
 </div> -->
