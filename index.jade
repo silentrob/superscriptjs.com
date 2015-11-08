@@ -22,14 +22,7 @@ html
         include _includes/header
       #overlay
       include _includes/description
-      //- #install-command $ npm install superscript -g
-
-
-    section
-      div
-        a(href="/starter/quickstart")
-          img(style="width:48%", src="/img/realtime.png" )
-          img(style="width:48%", src="/img/gambit.png" )
+      #install-command $ npm install superscript -g
 
     section#intro
       .boxes.clearfix
@@ -37,6 +30,13 @@ html
 
     section#usecase
       .boxes.clearfix
+        div
+          img.centerthing(src="/img/slack.png", style="width:90px")
+          //- svg.centerthing(width="90px" height="90px" xmlns="http://www.w3.org/2000/svg")
+          //-   image(xlink:href="/img/slack-sticker.svg" x="0" y="0" height="90px" width="90px")
+          h3 Works with Slack
+          p Extend your team collaboration with an intelligent office assistant. Check out the article on setting up <a href="https://medium.com/@rob_ellis/slack-superscript-rise-of-the-bots-bba8506a043c" target="_blank">Slack integration.</a>
+
         div
           svg.centerthing(width="105px" height="105px" xmlns="http://www.w3.org/2000/svg")
             image(xlink:href="/img/man465.svg" x="0" y="0" height="105px" width="105px" )
@@ -54,20 +54,8 @@ html
           h3 Phone Systems
           p Designed to plug into phone sytems or intergrate directly with <a href="https://www.twilio.com/">Twilio API</a>.
 
-        div
-          img.centerthing(src="/img/slack.png", style="width:90px")
-          //- svg.centerthing(width="90px" height="90px" xmlns="http://www.w3.org/2000/svg")
-          //-   image(xlink:href="/img/slack-sticker.svg" x="0" y="0" height="90px" width="90px")
-          h3 Works with Slack
-          p Extend your team collaboration with an intelligent office assistant. Check out the article on setting up <a href="https://medium.com/@rob_ellis/slack-superscript-rise-of-the-bots-bba8506a043c" target="_blank">Slack integration.</a>
 
-
-
-  section#getinvolved
-    h3 Want to contribute or get involved?
-    p Contributors are welcome! And we need your contributions to keep the project moving forward. You can report bugs, improve the documentation, or contribute code. You can dive into the <a href="http://github.com/silentrob/superscript/">code and review the issues</a> to get started.
-    p If you are not a developer and still want to get involve. Follow us on twitter <a href="https://twitter.com/superscriptjs">@superscriptjs</a>, star the repo or tell your developer friends. 
   
-    //- hr(style="width:40%")
+    hr(style="width:40%")
 
     include _includes/footer
