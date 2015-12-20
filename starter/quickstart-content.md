@@ -4,23 +4,7 @@
 SuperScript has a dependency on [Node JS](nodejs.org) and [Mongo](http://www.mongodb.org/). Please make sure they are installed prior to beginning.
 
 
-# Installing the Realtime Editor (NEW)
-
-SuperScript now has a fancy editor for crafting dialogue and authoring bots. The documentation on scripting will be applicable to both approaches, however parsing text files eventually be completely replaced by the SSC Editor in a future release.
-
-```sh
-$ git clone https://github.com/silentrob/superscript-editor.git
-cd superscript-editor
-npm install
-npm start
-
-Then Open your browser to http://localhost:3000
-```
-
-At this point, you are done. Just open your browser and start editing / chatting.
-
-
-# Alternatively -- Installing the Library
+# Installing the Library
 
 First install superscript globally
 
