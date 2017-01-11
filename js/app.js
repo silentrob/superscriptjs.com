@@ -114,7 +114,6 @@ $(function(){
     $('#npm-menu').dropit({ action: 'mouseenter' })
     $('#src-menu').dropit({ action: 'mouseenter' })
     $('#chat-menu').dropit({ action: 'mouseenter' });
-
   }
 
   // mobile
@@ -145,17 +144,14 @@ $(function(){
 
   // when in mobile mode, menu names should open the submenu
   $('.dropit-trigger a').click(function (e) {
-
     if (window.matchMedia('(max-width: 899px)').matches) {
       e.preventDefault()
     }
-
-  })
+  });
 
   // sub menu navigation
   $('.dropit-submenu li').click(function () {
     var path = $(this).find('a').attr('href')
     document.location = path
-  })
-
-})
+  });
+});

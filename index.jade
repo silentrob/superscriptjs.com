@@ -1,19 +1,18 @@
 doctype html
 html
   head
-    title SuperScript - A language for writing Chat Bots
+    title SuperScript - A bot framework for writing Chat Bots
     meta(name="description" content="SuperScript Create Human like chatbots with real AI")
-    meta(name="keywords" content="superscript Conversational UI AIML chatscript chatterbot eliza elizabot chatbot ai artificaial intelligent loebner")
+    meta(name="keywords" content="superscript Conversational UI AIML chatscript chatterbot eliza elizabot hubot botkit chatbot ai artificaial intelligent loebner")
     
-    meta(property='og:title', content='SuperScript - A language for writing Conversational UI')
-    meta(property='og:image', content='/img/realtime.png')
+    meta(property='og:title', content='SuperScript - A bot framework for writing Conversational UI')
     meta(property='og:site_name', content='SuperScript')
     meta(property='og:description', content="SuperScript Create Human like chatbots with real AI")
         
     include _includes/head
   body
 
-    a(href="https://github.com/silentrob/superscript")
+    a(href="https://github.com/superscriptjs/superscript")
       img(style="position: absolute; z-index:101; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png")
 
     section#home-content
@@ -32,21 +31,14 @@ html
       .boxes.clearfix
         div
           img.centerthing(src="/img/slack.png", style="width:90px")
-          //- svg.centerthing(width="90px" height="90px" xmlns="http://www.w3.org/2000/svg")
-          //-   image(xlink:href="/img/slack-sticker.svg" x="0" y="0" height="90px" width="90px")
           h3 Works with Slack
-          p Extend your team collaboration with an intelligent office assistant. Check out the article on setting up <a href="https://medium.com/@rob_ellis/slack-superscript-rise-of-the-bots-bba8506a043c" target="_blank">Slack integration.</a>
+          p Extend your team collaboration with an intelligent office assistant.
 
         div
           svg.centerthing(width="105px" height="105px" xmlns="http://www.w3.org/2000/svg")
             image(xlink:href="/img/man465.svg" x="0" y="0" height="105px" width="105px" )
           h3(style="margin-top:18px") Web Friendly
           p SuperScript works on the web over WebSocket, HTTP or TCP. It comes with a built in Telnet Client. <a href="https://github.com/silentrob/superscript-websocket-demo">And WebSocket Example client.</a>
-
-        //- div
-        //-   svg.centerthing(width="90px" height="90px" xmlns="http://www.w3.org/2000/svg")
-        //-     image(xlink:href="/img/online5.svg" x="0" y="0" height="90px" width="90px")
-        //-   h3 Mult-User
 
         div
           svg.centerthing(width="90px" height="90px" xmlns="http://www.w3.org/2000/svg")

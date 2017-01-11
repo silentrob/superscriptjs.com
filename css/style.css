@@ -482,26 +482,6 @@ pre, code {
   white-space: pre-wrap !important;
 }
 
-
-footer {
-  font-size: 11px;
-  margin: 30px 0 30px 0;
-}
-
-#footer-content {
-  display: table;
-  margin: 0 auto;
-}
-
-#footer-content div {
-  float: left;
-  margin-right: 20px;
-  background-repeat: no-repeat;
-  background-position: 0 1px;
-  padding-bottom: 4px;
-}
-
-
 /* navigation */
 
 #navbar {
@@ -608,8 +588,6 @@ footer {
   color: #259dff;
 }
 
-
-
 #sidebar-wrapper.stick {
   left: 0;
   position: fixed;
@@ -680,8 +658,12 @@ footer {
   margin-left: 230px;
 }
 
-
-
+sup.new {
+  color:red;
+  text-transform: uppercase;
+  font-size:60%;
+  font-weight: 600;
+}
 
 @media all and (max-width: 1250px) {
    #mascot {
@@ -693,6 +675,10 @@ footer {
 /* responsive */
 
 @media all and (max-width: 899px) {
+
+  #navmenu {
+    display: none;
+  }
 
   #mascot {
     display: none;
@@ -734,10 +720,6 @@ footer {
     font-size: 16px;
     line-height: 18px;
     font-weight: normal;
-  }
-
-  #menu {
-    display: none;
   }
 
   .content {
@@ -791,7 +773,7 @@ footer {
 
   .boxes div {
     width: 90%;
-  .b
+  }
   .content p img {
     width: 98%;
     height: 98%;
@@ -822,11 +804,12 @@ footer {
     display: none;
   }
 
-  #navmenu > li {
+  #navmenu li {
     float: none;
     border-bottom: 1px solid #ccc;
     margin: 0;
     min-height: 47px;
+    line-height: 47px;
     position: relative;
     background: #eee;
     cursor: pointer;
@@ -908,30 +891,6 @@ footer {
     display: none;
   }
 
-  footer {
-    margin: 0;
-  }
-
-  #footer-content {
-    display: block;
-    margin-left: 5%;
-  }
-
-  #footer-content div {
-    clear: both;
-  }
-
-  #sponsor {
-    margin-top: 30px;
-  }
-
-  #fork {
-    margin-left: 7px;
-    margin-top: 2px;
-    margin-bottom: 30px;
-    padding-left: 18px;
-  }
-
 }
 
 @media all and (max-width: 320px) {
@@ -943,6 +902,7 @@ footer {
   #sidebar-wrapper {
     display:none;
   }
+
   #content {
     margin-left:0px;
   }
