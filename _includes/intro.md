@@ -1,6 +1,6 @@
 <div id="intelligent">
   <h3>Intelligent</h3>
-  SuperScript was designed to be extensible and work with other AI frameworks like <a href="https://www.ibm.com/watson/">IMB Watson</a>, <a href="https://wit.ai/">Wit.ai</a>, or <a href="https://api.ai/">API.ai</a>.
+  SuperScript was designed to be extensible and work with other AI frameworks like <a href="https://www.ibm.com/watson/">IBM Watson</a>, <a href="https://wit.ai/">Wit.ai</a>, or <a href="https://api.ai/">API.ai</a>.
 </div>
 
 <div id="expressive">
